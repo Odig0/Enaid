@@ -1,4 +1,4 @@
-# Enaid IA WhatsAppBot
+# Enaid IA Financial Bot
 
 This WhatsApp bot combines the power of [Baileys](https://github.com/adiwajshing/Baileys) and [Coinbase AgentKit](https://portal.cdp.coinbase.com/access/api) to carry out financial transactions, manage wallets, and execute purchases directly through WhatsApp.
 
