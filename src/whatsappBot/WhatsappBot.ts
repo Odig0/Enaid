@@ -120,10 +120,7 @@ export class WhatsappBot {
       }
     })
 
-    this.socket.ev.on("contacts.upsert", e => {
-      const contacts = handleReceivedContacts(e)
-      // console.log(contacts)
-    })
+   
   }
 
   private restartConnection(): void {
@@ -152,21 +149,7 @@ export class WhatsappBot {
       }
     }
 
-    // TODO: AGREGAR _safeExecute para las reacciones
-    // TODO: AGREGAR _executeReaction para las reacciones
-    // for (const command of this.commands) {
-    //   const shouldExecute = command.executeIfMessage(reaction)
-    //   if (shouldExecute) {
-    //     const commandTask = new CommandTask()
-    //     void this.executeTaskQueue.enqueue(() => {
-    //       command._safeExecute(reaction, commandTask, this)
-    //     })
-
-    //     this.commandTasks.push(commandTask)
-    //     return
-    //   }
-    // }
-  }
+    
   private processMessage(message: MessageReceivedType) {
     if (this.isOldMessage(message.timestamp)) return
 
