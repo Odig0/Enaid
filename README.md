@@ -1,3 +1,179 @@
+# Enaid Financial WhatsAppBot
+
+This WhatsApp bot combines the power of [Baileys](https://github.com/adiwajshing/Baileys) and [Coinbase AgentKit](https://portal.cdp.coinbase.com/access/api) to carry out financial transactions, manage wallets, and execute purchases directly through WhatsApp.
+
+## Key Features
+
+- **Financial Transactions:** Integrates Coinbase AgentKit to enable transfers and purchases of digital assets.
+- **Powered by Baileys:** Stable connection with WhatsApp to send and receive messages.
+- **Data Management:** Can be configured with [Supabase](https://supabase.com/) to store user and transaction data.
+- **TypeScript Architecture:** Strong typing for greater reliability and scalability.
+- **Docker Support:** Includes a `docker-compose.yml` file for simplified deployment.
+
+## Requirements
+
+- **Node.js 14+**
+- [Coinbase AgentKit](https://portal.cdp.coinbase.com/access/api) with API keys
+- [Supabase CLI](https://supabase.com/docs/guides/cli) (optional, for database management)
+- [Docker](https://www.docker.com/) (optional, for container deployment)
+
+### Verify Node.js Version
+
+Run the following commands to verify your Node.js and pnpm versions:
+
+```bash
+node --version
+pnpm --version
+```
+
+## Installation
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/Odig0/Enaid.git
+   cd Enaid
+   ```
+2. **Install Dependencies:**
+   ```bash
+   pnpm install
+   ```
+
+## Environment Variables
+
+Create or edit a `.env` file at the root of the project with the following variables:
+
+```env
+GOOGLE_CLIENT_EMAIL=NO
+GOOGLE_PRIVATE_KEY=NO
+DATABASE_HOST=localhost
+DATABASE_NAME=WhatsappBot
+DATABASE_PASSWORD=postgres
+DATABASE_USERNAME=postgres
+DATABASE_URL=postgres://postgres:postgres@localhost/WhatsappBot
+CDP_API_KEY_NAME=""
+CDP_API_KEY_PRIVATE_KEY=""
+OPENAI_API_KEY=""
+```
+
+> Adjust these values according to your credentials and configuration.
+
+## Running the Bot
+
+### Development Mode
+
+```bash
+pnpm run dev
+```
+
+When the bot starts, it will display a **QR code** in the terminal. Open WhatsApp, go to **WhatsApp Web**, and scan the displayed QR code to link your account.
+
+### QR Code Scanning
+
+Once linked, the bot can send and receive messages. For instance, you can check your balance or initiate a transaction:
+
+```bash
+!balance
+!transfer 0.01ETH to 0x12345...
+```
+
+The bot will use Coinbase AgentKit to perform the operation.
+
+### Docker Usage
+
+If you prefer to use Docker, run:
+
+```bash
+docker-compose up
+```
+
+This will start the service inside a container with all dependencies configured.
+
+## Funding a Wallet (Faucet)
+
+If you are on Base Sepolia or a compatible testnet, you can add funds to your wallet using a faucet. For example, run:
+
+```bash
+/coinbase faucet
+```
+
+The bot will wait for the on-chain transaction confirmation and notify you once it is completed:
+
+```bash
+Faucet transaction completed successfully.
+```
+
+To check your balance:
+
+```bash
+/coinbase balance
+```
+
+## Transferring Funds
+
+Once your wallet has funds, you can transfer them to another account. If you want to send funds to your MetaMask wallet (e.g. `0x77370fd...`), use:
+
+```bash
+/coinbase transfer 0.00001 ETH to 0x77370fd...
+```
+
+The bot will confirm once the transaction is successfully finalized.
+
+## Example Commands
+
+- **Check Balance:**
+
+  ```bash
+  /coinbase balance
+  ```
+  Shows the configured wallet balance.
+
+- **Transfer Assets:**
+
+  ```bash
+  /coinbase transfer 0.05ETH to 0xABCDEF...
+  ```
+  Transfers the specified amount of ETH to the chosen address.
+
+- **Buy Tokens:**
+
+  ```bash
+  /coinbase buy TOKEN_SYMBOL amount
+  ```
+  Executes a token purchase using AgentKit.
+
+- **Check Address:**
+
+  ```bash
+  /coinbase cual es mi address
+  ```
+  The bot responds with your account and configured address:
+
+  ```
+  Bot: Wallet: 38693f84-b674-457d-a773-83c2d1ed77bd on base-sepolia network
+  Default address: 0x644dC3a1C26e7747c47b7dF216646Df7a765CA35
+  Your address is: 0x644dC3a1C26e7747c47b7dF216646Df7a765CA35
+  ```
+
+## Contributions
+
+Contributions are welcome. To propose improvements:
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/new-functionality
+   ```
+3. Make your changes and commit.
+4. Open a Pull Request with a detailed description of your updates.
+
+## License
+
+This project is licensed under the **MIT** License.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Enaid WhatsAppBot Financiero
 
 Este bot de WhatsApp combina la potencia de [Baileys](https://github.com/adiwajshing/Baileys) con [AgentKit de Coinbase](https://portal.cdp.coinbase.com/access/api) para realizar transacciones financieras, gestionar billeteras y ejecutar compras directamente a través de WhatsApp.
